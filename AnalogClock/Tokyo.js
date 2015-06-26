@@ -1,72 +1,72 @@
 //TOKYO
-var canvas = document.getElementById("Tokyo");
+var canvasT = document.getElementById("Tokyo");
 //create drawing object
-var ctx = canvas.getContext("2d");
-// use canvas height for radius to ensure it works with every canvas
-var radius = canvas.height/2;
+var ctxT = canvasT.getContext("2d");
+// use canvasT height for radiusT to ensure it works with every canvasT
+var radiusT = canvasT.height/2;
 
-// remapping the drawing object to the center of canvas
-ctx.translate (radius,radius);
+// remapping the drawing object to the center of canvasT
+ctxT.translate (radiusT,radiusT);
 
-// reduce radius to ensure it fits canvas
-radius = radius*0.90;
+// reduce radiusT to ensure it fits canvasT
+radiusT = radiusT*0.90;
 
 // create a funtion to draw the clock
 
-function drawClock() {
-    drawFace(ctx, radius);
-    drawNumbers(ctx, radius);
-    drawTime(ctx, radius);
+function drawClockT() {
+    drawFaceT(ctxT, radiusT);
+    drawNumbersT(ctxT, radiusT);
+    drawTimeT(ctxT, radiusT);
 }
 
-function drawFace(ctx, radius) {
+function drawFaceT(ctxT, radiusT) {
     //clockdial
-    ctx.beginPath();
-    ctx.arc (0, 0, radius, 0,2*Math.PI);
-    ctx.fillStyle = "white";
-    ctx.fill();
+    ctxT.beginPath();
+    ctxT.arc (0, 0, radiusT, 0,2*Math.PI);
+    ctxT.fillStyle = "white";
+    ctxT.fill();
     
     // clock ring
-    var grad = ctx.createRadialGradient(0,0,radius*0.95,0,0,radius*1.05)
-    grad.addColorStop(0,"black");
-    grad.addColorStop(0.5, "white");
-    grad.addColorStop(1, "black");
-    ctx.strokeStyle = grad;
-    ctx.lineWidth = radius*0.1;
-    ctx.stroke();
+    var gradT = ctxT.createRadialGradient(0,0,radiusT*0.95,0,0,radiusT*1.05)
+    gradT.addColorStop(0,"black");
+    gradT.addColorStop(0.5, "white");
+    gradT.addColorStop(1, "black");
+    ctxT.strokeStyle = gradT;
+    ctxT.lineWidth = radiusT*0.1;
+    ctxT.stroke();
     
     //clock centre
-    ctx.beginPath();
-    ctx.arc (0,0,radius*0.1,0,2*Math.PI);
-    ctx.fillStyle = "pink";
-    ctx.fill();
+    ctxT.beginPath();
+    ctxT.arc (0,0,radiusT*0.1,0,2*Math.PI);
+    ctxT.fillStyle = "pink";
+    ctxT.fill();
 }
 // function for drawing numbers
-function drawNumbers(ctx, radius) {
+function drawNumbersT(ctxT, radiusT) {
     var ang;
     var num;
     //set font of drawing tool
-    ctx.font = radius*0.15 + "px arial";
+    ctxT.font = radiusT*0.15 + "px arial";
     
     //set position of text
-    ctx.textBaseline="middle";
-    ctx.textAlign="center";
+    ctxT.textBaseline="middle";
+    ctxT.textAlign="center";
     
     //set print position of numbers
     for(num= 1; num < 13; num++){
         ang = num * Math.PI / 6;
-        ctx.rotate(ang);
-        ctx.translate(0, -radius*0.85);
-        ctx.rotate(-ang);
-        ctx.fillText(num.toString(), 0, 0);
-        ctx.rotate(ang);
-        ctx.translate(0, radius*0.85);
-        ctx.rotate(-ang);
+        ctxT.rotate(ang);
+        ctxT.translate(0, -radiusT*0.85);
+        ctxT.rotate(-ang);
+        ctxT.fillText(num.toString(), 0, 0);
+        ctxT.rotate(ang);
+        ctxT.translate(0, radiusT*0.85);
+        ctxT.rotate(-ang);
     }
 }
 
 //Time function
-function drawTime (ctx, radius) {
+function drawTimeT (ctxT, radiusT) {
     //Using Date to get hrs, min, seconds
     var now = new Date();
     var hour = (now.getHours()) + 6;
@@ -76,32 +76,32 @@ function drawTime (ctx, radius) {
     //calc angle of hour hand and give it length and width
     hour=hour%12;
     hour=(hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));
-    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    drawHandT(ctxT, hour, radiusT*0.5, radiusT*0.07);
     
     //minute hand
     minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
-    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    drawHandT(ctxT, minute, radiusT*0.8, radiusT*0.07);
     
     //second hand
     second=(second*Math.PI/30);
-    drawHand(ctx, second, radius*0.9, radius*0.02);
+    drawHandT(ctxT, second, radiusT*0.9, radiusT*0.02);
     
 }
 
 // function for drawing clock hands
-function drawHand(ctx, pos, length, width) {
-    ctx.beginPath();
-    ctx.lineWidth = width;
-    ctx.lineCap = "round";
-    ctx.moveTo(0,0);
-    ctx.rotate(pos);
-    ctx.lineTo(0, -length);
-    ctx.stroke();
-    ctx.rotate(-pos);
+function drawHandT(ctxT, pos, length, width) {
+    ctxT.beginPath();
+    ctxT.lineWidth = width;
+    ctxT.lineCap = "round";
+    ctxT.moveTo(0,0);
+    ctxT.rotate(pos);
+    ctxT.lineTo(0, -length);
+    ctxT.stroke();
+    ctxT.rotate(-pos);
 }
 
 
 //start clock calling draw clock at intervals
-setInterval(drawClock, 1000);
+setInterval(drawClockT, 1000);
 
 
