@@ -1,0 +1,57 @@
+#Nairobi {
+	position:relative;
+	left: -200px;
+	float:left;
+	z-link: 4;
+}
+#London{
+	position:relative;
+	left:600px;
+	z-index:4;
+}
+
+#Lagos{
+	position:relative;
+	left:800px;
+	z-index:4;
+}
+
+#NewYork {
+	position:relative;
+	left:1000px;
+	z-index:4;
+}
+#Tokyo {
+	position:relative;
+	left:1200px;
+	z-index:4;
+}
+
+.Lond{
+	position:relative;
+	left: 600px;
+}
+.Nai{
+	position:relative;
+	left:-200px;
+}
+.Naija{
+	position:relative;
+	left:800px;
+}
+.Tky{
+	position:relative;
+	left:1200px;
+}
+.NY{
+	position:relative;
+	left:1000px;
+}
+
+h1{
+	font:Garamond;
+	font-size:20px;
+	color:Violet;
+	position:relative;
+	left:100px;
+}
